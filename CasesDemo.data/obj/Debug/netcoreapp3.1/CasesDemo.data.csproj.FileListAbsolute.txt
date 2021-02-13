@@ -1,0 +1,12 @@
+D:\Test\CasesDemo\CasesDemo.data\bin\Debug\netcoreapp3.1\CasesDemo.data.deps.json
+D:\Test\CasesDemo\CasesDemo.data\bin\Debug\netcoreapp3.1\CasesDemo.data.dll
+D:\Test\CasesDemo\CasesDemo.data\bin\Debug\netcoreapp3.1\CasesDemo.data.pdb
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.csprojAssemblyReference.cache
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.AssemblyInfoInputs.cache
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.AssemblyInfo.cs
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.csproj.CoreCompileInputs.cache
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.dll
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.pdb
+D:\Test\CasesDemo\CasesDemo.data\bin\Debug\netcoreapp3.1\CasesDemo.data.runtimeconfig.json
+D:\Test\CasesDemo\CasesDemo.data\bin\Debug\netcoreapp3.1\CasesDemo.data.runtimeconfig.dev.json
+D:\Test\CasesDemo\CasesDemo.data\obj\Debug\netcoreapp3.1\CasesDemo.data.genruntimeconfig.cache

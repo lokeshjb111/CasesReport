@@ -1,0 +1,212 @@
+<body>
+  <div style="width: 600px; float: left;">
+  <h1>Case Feed</h1>
+  <div [formGroup]="caseFormGroup">
+    <table style="margin:30px; border:1px solid #cecece">
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: right">
+          Choose State:
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 30px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: left">
+          <dx-select-box [dataSource]="stateDatasource" displayExpr="value" valueExpr="key" formControlName="state"
+            (onValueChanged)="stateChanged($event)">
+          </dx-select-box>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: right">
+
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 20px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          <div
+            *ngIf="!isStateValid || (caseFormGroup.controls['state'].invalid && (caseFormGroup.controls['state'].dirty || caseFormGroup.controls['state'].touched))"
+            style="color:red;font-size: 10px;padding-left: 10px;">
+            State is required
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: right">
+          Date:
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 30px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: left">
+          <dx-date-box formControlName="date" [displayFormat]="'dd/MM/yyyy'" (onOptionChanged)="onDateChanged($event)" >
+          </dx-date-box>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: right">
+
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 20px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          <div
+            *ngIf=" ((caseFormGroup.controls['date'].invalid ) && (caseFormGroup.controls['date'].dirty || caseFormGroup.controls['date'].touched))"
+            style="color:red;font-size: 10px;padding-left: 10px;">
+            Date is required
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: right">
+          No. of new cases Today:
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 30px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: left">
+
+          <dx-number-box formControlName="newCases" [min]="1" [step]="0" format="fixedpoint">
+          </dx-number-box>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: right">
+
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 20px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          <div
+            *ngIf="!isNewCasesValid || (caseFormGroup.controls['newCases'].invalid && (caseFormGroup.controls['newCases'].dirty || caseFormGroup.controls['newCases'].touched))"
+            style="color:red;font-size: 10px;padding-left: 10px;">
+            New case's is required
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: right">
+          No. of Recovery Today:
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 30px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: left">
+          <dx-number-box formControlName="recovery" [min]="1" format="fixedpoint" [step]="0">
+          </dx-number-box>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: right">
+
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 20px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          <div
+            *ngIf="!isRecoveryValid || (caseFormGroup.controls['recovery'].invalid && (caseFormGroup.controls['recovery'].dirty || caseFormGroup.controls['recovery'].touched))"
+            style="color:red;font-size: 10px;padding-left: 10px;">
+            Recovery case's is required
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: right">
+          No. of Deaths Today:
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 30px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: left">
+          <dx-number-box formControlName="death" [min]="1" format="fixedpoint" [step]="0">
+          </dx-number-box>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: right">
+
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 20px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          <div
+            *ngIf="!isDeathValid || (caseFormGroup.controls['death'].invalid && (caseFormGroup.controls['death'].dirty || caseFormGroup.controls['death'].touched))"
+            style="color:red;font-size: 10px;padding-left: 10px;">
+            Death case's is required
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 250px;height: 30px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 30px;height: 30px;text-align: right">
+        </td>
+        <td>
+          <button (click)="updateCase()"
+            style="background-color:#a2c4c9;border: 1px solid #cecece;width: 250px;height: 30px;text-align: center">Update</button>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+<div style="width: 600px; float:left;margin-left: 50px;">
+  <h1>Case Status</h1>
+  <div>
+    <table style="margin:30px; border:1px solid #cecece">
+      <tr>
+        <td style="border: 1px solid #cecece;width: 350px;height: 30px;text-align: right">
+          From Date:
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 30px;text-align: right">
+          <dx-date-box  [displayFormat]="'dd/MM/yyyy'" [acceptCustomValue]="false" [(value)]="fromDate" (onOptionChanged)="statusDateChanged($event)">
+          </dx-date-box>
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 30px;text-align: right">
+          To Date:
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 30px;text-align: left">
+          <dx-date-box  [displayFormat]="'dd/MM/yyyy'" [acceptCustomValue]="false" [(value)]="toDate" (onOptionChanged)="statusDateChanged($event)" >
+          </dx-date-box>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 350px;height: 20px;text-align: right">
+
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: left">
+          
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: right">
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: left">
+          
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #cecece;width: 350px;height: 20px;text-align: left">
+          Name of the State
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: left">
+          Total cases filed
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: left">
+          No. of Recoveries
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          No. of Deaths
+        </td>
+      </tr>
+      <tr *ngFor="let item of casesDatasource">
+        <td style="border: 1px solid #cecece;width: 350px;height: 20px;text-align: left">
+          {{item.state}}
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: left">
+          {{item.newCases}}
+        </td>
+        <td style="border: 1px solid #cecece;width: 280px;height: 20px;text-align: left">
+          {{item.recovery}}
+        </td>
+        <td style="border: 1px solid #cecece;width: 250px;height: 20px;text-align: left">
+          {{item.death}}
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</div>
+</body>
