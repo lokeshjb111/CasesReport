@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   casesDatasource:any =[];
   stateDatasource: any = [{ "key": '0', "value": "Assam" }, { "key": '1', "value": "Tamil Nadu" }, { "key": '2', "value": "Andhra Pradesh" }, { "key": '3', "value": "Kerala" }, { "key": '4', "value": "Karnataka" },
   { "key": '5', "value": "Odisha" }, { "key": '6', "value": "West Bengal" }, { "key": '7', "value": "Maharastra" }, { "key": '8', "value": "Rajasthan" }, { "key": '9', "value": "Gujarath" }];
+  proxyDatasource : any = [];
 
   constructor(private _fb:FormBuilder, private http: HttpClient, private datePipe : DatePipe){
     this.buildForm();
@@ -28,6 +30,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCases();
+    this.getDataUsingProxy();
   }
 
   buildForm(){
@@ -43,9 +46,16 @@ export class AppComponent implements OnInit {
 
   getCases(){
     var obj = {fromDate:this.datePipe.transform(this.fromDate, 'dd/MM/yyyy'),
-    toDate:this.datePipe.transform(this.toDate, 'dd/MM/yyyy')};
+    toDate:this.datePipe.transform(this.toDate, 'dd/MM/yyyy'), "Key" : environment["APIKey"]};
     this.http.post("api/getCases", obj ).subscribe(data => {
       this.casesDatasource = data["result"];
+    });
+  }
+
+  getDataUsingProxy(){
+    this.http.get("api/getData").subscribe(data => {
+      console.log("proxy data", data);
+      this.proxyDatasource = data;
     });
   }
 

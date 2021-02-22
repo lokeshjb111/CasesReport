@@ -1,0 +1,7 @@
+{
+    "/api/getData": {
+        "target": "https://jsonplaceholder.typicode.com/todos",
+        "secure": false,
+        "changeOrigin":true
+    }
+}
